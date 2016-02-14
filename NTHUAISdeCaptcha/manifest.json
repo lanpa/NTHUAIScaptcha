@@ -1,0 +1,27 @@
+﻿{
+	"name": "NTHU AIS deCaptcha",
+	"author": "Tzu-Wei Huang",
+	"manifest_version": 3,
+	"version": "0.3",
+	"permissions": [
+		"storage"
+	],
+	"icons": {
+		"16": "icon/nthu16.jpg",
+		"48": "icon/nthu48.jpg",
+		"128": "icon/nthu128.jpg"
+	},        
+	"description": "This extension fills the validation code for you.",
+	"content_scripts": [{
+		"matches": ["https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/*"],
+		"js": [
+			"js/jquery-1.12.0.min.js",
+			"js/convnet.min.js",
+			"AISdecap.js"
+		],
+		"run_at": "document_end"
+	}],
+	"web_accessible_resources": [
+		"config/network.json"
+	]
+}
