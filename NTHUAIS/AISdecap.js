@@ -3,9 +3,6 @@ var img = new Image()
 imgsrc = document.getElementsByName("passwd2")[0].nextSibling.nextSibling.src;
 img.src = imgsrc;
 
-if(img.width==0&&!document.ready)
-    location.reload();
-    
 var mycanvas = document.createElement("canvas");
 mycanvas.id = "mycanvas"; document.body.appendChild(mycanvas);
 ctx = mycanvas.getContext("2d")
@@ -34,6 +31,8 @@ var net = new convnetjs.Net();
 net.fromJSON(jsonObj);
 
 
+img.onload = function(){
+  // wait until image has been loaded
 ctx.drawImage(img,0,0);
 var imgData=ctx.getImageData(0,0,img.width,img.height);
 // invert colors
@@ -176,6 +175,7 @@ for(i=0;i<6;i++){
 //    document.getElementsByName("passwd2")[0].value = '0'+ans.toString();
     
 document.getElementsByName("passwd2")[0].onclick = function(){document.getElementsByName("passwd2")[0].value = "";}
+};
 
 function centerOfMass(arr){    
     h = arr.height;
